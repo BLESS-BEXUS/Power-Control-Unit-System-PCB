@@ -50,10 +50,37 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.5
+          "border_display_style": 2,
+          "border_hatch_pitch": 0.5,
+          "corner_radius": 0.0,
+          "corner_smoothing": 2,
+          "fill_mode": 0,
+          "hatch_gap": 1.5,
+          "hatch_orientation": 0.0,
+          "hatch_smoothing_level": 0,
+          "hatch_smoothing_value": 0.1,
+          "hatch_thickness": 1.0,
+          "min_clearance": 0.4,
+          "min_island_area": 10.0,
+          "min_thickness": 0.2,
+          "pad_connection": 1,
+          "remove_islands": 0,
+          "thermal_relief_gap": 0.3,
+          "thermal_relief_spoke_width": 0.3
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        },
+        {
+          "gap": 0.3,
+          "via_gap": 0.3,
+          "width": 0.3
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "version": 2
@@ -124,22 +151,22 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.0,
-        "min_connection": 0.0,
+        "min_clearance": 0.152,
+        "min_connection": 1.52,
         "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
-        "min_hole_clearance": 0.25,
-        "min_hole_to_hole": 0.25,
+        "min_hole_clearance": 0.254,
+        "min_hole_to_hole": 0.254,
         "min_microvia_diameter": 0.2,
         "min_microvia_drill": 0.1,
         "min_resolved_spokes": 2,
         "min_silk_clearance": 0.0,
         "min_text_height": 0.8,
-        "min_text_thickness": 0.08,
+        "min_text_thickness": 0.1,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.2,
-        "min_via_annular_width": 0.1,
-        "min_via_diameter": 0.5,
+        "min_track_width": 0.152,
+        "min_via_annular_width": 0.152,
+        "min_via_diameter": 0.6,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
@@ -187,7 +214,14 @@
           "td_width_to_size_filter_ratio": 0.9
         }
       ],
-      "track_widths": [],
+      "track_widths": [
+        0.0,
+        1.0,
+        1.25,
+        2.0,
+        2.5,
+        3.0
+      ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
           "corner_radius_percentage": 80,
@@ -214,7 +248,16 @@
           "spacing": 0.6
         }
       },
-      "via_dimensions": [],
+      "via_dimensions": [
+        {
+          "diameter": 0.0,
+          "drill": 0.0
+        },
+        {
+          "diameter": 0.7,
+          "drill": 0.33
+        }
+      ],
       "zones_allow_external_fillets": false
     },
     "ipc2581": {
@@ -478,7 +521,7 @@
   "net_settings": {
     "classes": [
       {
-        "bus_width": 12,
+        "bus_width": 0,
         "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
@@ -495,6 +538,56 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "bus_width": 0,
+        "line_style": 0,
+        "name": "PWR12V",
+        "pcb_color": "rgb(183, 2, 22)",
+        "priority": 3,
+        "schematic_color": "rgb(183, 2, 22)",
+        "tuning_profile": "",
+        "wire_width": 6
+      },
+      {
+        "bus_width": 0,
+        "line_style": 0,
+        "name": "PWR28V",
+        "pcb_color": "rgb(181, 44, 76)",
+        "priority": 4,
+        "schematic_color": "rgb(181, 44, 76)",
+        "tuning_profile": "",
+        "wire_width": 6
+      },
+      {
+        "bus_width": 0,
+        "line_style": 0,
+        "name": "PWR3V3",
+        "pcb_color": "rgb(232, 64, 38)",
+        "priority": 1,
+        "schematic_color": "rgb(232, 64, 38)",
+        "tuning_profile": "",
+        "wire_width": 6
+      },
+      {
+        "bus_width": 0,
+        "line_style": 0,
+        "name": "PWR5V",
+        "pcb_color": "rgb(255, 148, 85)",
+        "priority": 2,
+        "schematic_color": "rgb(255, 148, 85)",
+        "tuning_profile": "",
+        "wire_width": 6
+      },
+      {
+        "bus_width": 0,
+        "line_style": 0,
+        "name": "PWRGND",
+        "pcb_color": "rgb(132, 132, 132)",
+        "priority": 0,
+        "schematic_color": "rgb(132, 132, 132)",
+        "tuning_profile": "",
+        "wire_width": 6
       }
     ],
     "meta": {
@@ -502,7 +595,32 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "PWR3V3",
+        "pattern": "*3V3*"
+      },
+      {
+        "netclass": "PWR5V",
+        "pattern": "+5V"
+      },
+      {
+        "netclass": "PWR12V",
+        "pattern": "+12V"
+      },
+      {
+        "netclass": "PWR28V",
+        "pattern": "+28V"
+      },
+      {
+        "netclass": "PWR12V",
+        "pattern": "*PWM*"
+      },
+      {
+        "netclass": "PWRGND",
+        "pattern": "*GND*"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
@@ -632,7 +750,7 @@
         "uuid": "0a981e07-3ea8-4de4-b6e2-1c2778b7d0af"
       }
     ],
-    "used_designators": "",
+    "used_designators": "#PWR15,FID1-3,MH1-4",
     "variants": []
   },
   "sheets": [
